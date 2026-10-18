@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: sheikh-haseeb-portfolio
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements-ai.txt && PYTHONPATH=. python scripts/build_index.py
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: ENV
+        value: production
+      - key: CHAT_RATE_LIMIT
+        value: "20"
+      - key: LLM_PROVIDER
+        value: groq
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GOOGLE_API_KEY
+        sync: false

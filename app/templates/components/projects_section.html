@@ -1,0 +1,12 @@
+<section id="projects" class="py-24 section-fade">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <p class="section-eyebrow">Selected Work</p>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-desc">{{ portfolio.projects_description }}</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for project in portfolio.projects %}
+      {% include "components/project_card.html" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

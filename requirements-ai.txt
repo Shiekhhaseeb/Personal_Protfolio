@@ -1,0 +1,9 @@
+# AI / RAG stack (Phase 4+) — no local embedding models (uses Google API)
+-r requirements.txt
+langchain>=0.3.0,<0.4.0
+langchain-core>=0.3.0,<0.4.0
+langchain-community>=0.3.0,<0.4.0
+langchain-text-splitters>=0.3.0,<0.4.0
+langchain-groq>=0.2.0,<1.0.0
+langchain-google-genai>=2.0.0,<3.0.0
+faiss-cpu>=1.8.0,<2.0.0

@@ -1,0 +1,37 @@
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 border-b border-border/50 bg-bg-primary/70 backdrop-blur-xl transition-all duration-300">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#hero" class="flex items-center gap-2.5 group">
+      <img src="/static/logo.svg" alt="Logo" class="w-9 h-9 transition-transform group-hover:scale-105" />
+      <span class="font-display font-semibold text-sm hidden sm:inline group-hover:text-accent transition-colors">{{ portfolio.profile.name }}</span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-6 text-sm text-muted">
+      <a href="#about" class="nav-link hover:text-accent transition-colors">About</a>
+      <a href="#skills" class="nav-link hover:text-accent transition-colors">Skills</a>
+      <a href="#projects" class="nav-link hover:text-accent transition-colors">Projects</a>
+      <a href="#experience" class="nav-link hover:text-accent transition-colors">Experience</a>
+      <a href="/resume" class="btn-primary text-xs py-1.5 px-3" download aria-label="Download Resume">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+        </svg>
+        Resume
+      </a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+
+    <button id="mobile-menu-btn" class="md:hidden p-2 text-muted hover:text-accent rounded-lg hover:bg-white/5 transition-colors" aria-label="Open menu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </nav>
+
+  <div id="mobile-menu" class="hidden md:hidden border-t border-border/50 bg-bg-surface/95 backdrop-blur-xl px-4 py-3 space-y-1">
+    <a href="#about" class="block py-2.5 px-2 text-sm text-muted hover:text-accent rounded-lg hover:bg-white/5">About</a>
+    <a href="#skills" class="block py-2.5 px-2 text-sm text-muted hover:text-accent rounded-lg hover:bg-white/5">Skills</a>
+    <a href="#projects" class="block py-2.5 px-2 text-sm text-muted hover:text-accent rounded-lg hover:bg-white/5">Projects</a>
+    <a href="#experience" class="block py-2.5 px-2 text-sm text-muted hover:text-accent rounded-lg hover:bg-white/5">Experience</a>
+    <a href="/resume" class="block py-2.5 px-2 text-sm text-accent font-medium rounded-lg hover:bg-white/5" download>Download Resume</a>
+    <a href="#contact" class="block py-2.5 px-2 text-sm text-accent font-medium rounded-lg bg-accent/5">Contact</a>
+  </div>
+</header>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{{ portfolio.seo.title }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ portfolio.seo.description }}{% endblock %}" />
+  <meta name="author" content="{{ portfolio.profile.name }}" />
+  <link rel="canonical" href="{{ portfolio.seo.site_url }}{{ canonical_path|default('') }}" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/static/logo.svg" />
+  <link rel="alternate icon" href="/static/favicon.ico" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ portfolio.seo.title }}" />
+  <meta property="og:description" content="{{ portfolio.seo.description }}" />
+  <meta property="og:url" content="{{ portfolio.seo.site_url }}" />
+  <meta property="og:image" content="{{ portfolio.seo.site_url }}{{ portfolio.seo.og_image }}" />
+  <meta property="og:site_name" content="{{ portfolio.profile.name }} Portfolio" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ portfolio.seo.title }}" />
+  <meta name="twitter:description" content="{{ portfolio.seo.description }}" />
+  <meta name="twitter:image" content="{{ portfolio.seo.site_url }}{{ portfolio.seo.og_image }}" />
+  <meta name="twitter:creator" content="@shiekhHaseeb7" />
+
+  <!-- JSON-LD Structured Data (schema.org Person) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": {{ portfolio.profile.name | tojson }},
+    "jobTitle": {{ portfolio.profile.title | tojson }},
+    "url": {{ portfolio.seo.site_url | tojson }},
+    "image": {{ (portfolio.seo.site_url + portfolio.profile.photo) | tojson }},
+    "description": {{ portfolio.profile.bio | tojson }},
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": {{ portfolio.profile.location | tojson }}
+    },
+    "sameAs": [
+      {{ portfolio.social.linkedin | tojson }},
+      {{ portfolio.social.github | tojson }},
+      {{ portfolio.social.twitter | tojson }}
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: { primary: '#0a0a0f', surface: '#12121a', elevated: '#18182a' },
+            accent: { DEFAULT: '#00d4ff', purple: '#7c3aed', pink: '#ec4899' },
+            border: { DEFAULT: '#1e1e2e' },
+            muted: '#8888a0',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['"Space Grotesk"', 'Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="/static/css/custom.css" />
+  {% block head %}{% endblock %}
+</head>
+<body class="bg-bg-primary text-[#f0f0f5] font-sans antialiased">
+  <div class="ambient-bg" aria-hidden="true"></div>
+  {% block body %}{% endblock %}
+  <script src="/static/js/main.js" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

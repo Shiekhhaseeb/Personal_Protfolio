@@ -1,0 +1,161 @@
+{
+  "profile": {
+    "name": "Sheikh Haseeb",
+    "title": "AI/ML Engineer",
+    "tagline": "Turning curiosity into intelligent systems — one model, one agent, one solution at a time.",
+    "location": "Srinagar, J&K, India",
+    "experience_years": 1,
+    "email": "shiekhhaseeb2019@gmail.com",
+    "photo": "/static/images/profile.jpeg",
+    "bio": "AI/ML Engineer based in Srinagar with 1 year of experience building ML pipelines, RAG systems, and agentic AI solutions. Currently at Cogveel Technologies. Open-source contributor (OMR checker). Passionate about turning curiosity into knowledge — through code, models, and teaching.",
+    "current_status": "AI/ML Engineer at Cogveel Technologies",
+    "availability": "Open to opportunities",
+    "last_updated": "2026-10-18"
+  },
+  "stats": [
+    { "label": "Years Experience", "value": "1+" },
+    { "label": "Projects", "value": "4+" },
+    { "label": "Open Source", "value": "1" }
+  ],
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/shiekh-haseeb-89180922a/",
+    "github": "https://github.com/Shiekhhaseeb",
+    "twitter": "https://x.com/shiekhHaseeb7"
+  },
+  "skills": {
+    "core": [
+      "Python",
+      "Machine Learning",
+      "Deep Learning",
+      "scikit-learn",
+      "Seaborn",
+      "Matplotlib",
+      "Generative AI",
+      "LangChain",
+      "Agentic AI"
+    ],
+    "frameworks": ["FastAPI", "Streamlit", "Flask"],
+    "mlops": ["Docker"],
+    "databases": ["PostgreSQL", "Pinecone", "Chroma"],
+    "tools": ["Git", "Jupyter"]
+  },
+  "differentiators": [
+    "Agentic AI builds — hands-on with LangChain and agent workflows",
+    "End-to-end ML pipelines — from data to model to API to deployment",
+    "Open-source contributor — OMR checker with API, database, and UI"
+  ],
+  "projects_description": "RAG systems, computer vision, and ML-powered products — including proprietary builds and open-source contributions.",
+  "projects": [
+    {
+      "id": "rag-chatbot",
+      "title": "RAG Chatbot for Docs",
+      "company": "Cogveel Technologies",
+      "problem": "Users upload a PDF and get accurate answers grounded in that document.",
+      "description": "Designed and built document ingestion, chunking, embedding, and retrieval pipelines for a client-facing RAG Q&A product.",
+      "tech_stack": ["Python", "LangChain", "FAISS", "FastAPI"],
+      "role": "AI/ML Engineer — backend / pipeline",
+      "badges": ["Built at Cogveel", "Proprietary"],
+      "is_proprietary": true,
+      "github_url": null,
+      "demo_url": null,
+      "company_url": "https://cogveel.com/"
+    },
+    {
+      "id": "omr-system",
+      "title": "End-to-End OMR Processing System",
+      "company": null,
+      "problem": "Examiners photograph or scan filled answer sheets and need fast, reliable digitization.",
+      "description": "Built an end-to-end OMR processing system that aligns sheets using side timing marks, reads 120+ bubble fields, flags low-quality uploads, scores against an answer key, and provides batch history with export and search via a Flask REST API and SQLite persistence.",
+      "tech_stack": ["Python", "OpenCV", "Flask", "SQLite"],
+      "role": "Solo — Open Source",
+      "badges": ["Open Source"],
+      "is_proprietary": false,
+      "github_url": null,
+      "demo_url": null,
+      "company_url": null
+    },
+    {
+      "id": "finna-ai",
+      "title": "Finna.ai — Browser Extension",
+      "company": "Cogveel Technologies",
+      "problem": "E-commerce and marketing teams struggle to understand how users interact with product pages — Finna.ai scores engagement and buying intent in real time to help prioritize leads and content.",
+      "description": "Built ML models and scoring logic for engagement and buying-intent signals, integrated into the Finna.ai browser extension.",
+      "tech_stack": ["Python", "ML scoring models", "Browser extension"],
+      "role": "AI/ML Engineer",
+      "badges": ["Built at Cogveel", "Proprietary"],
+      "is_proprietary": true,
+      "github_url": null,
+      "demo_url": null,
+      "company_url": "https://cogveel.com/"
+    },
+    {
+      "id": "consultancy-ai",
+      "title": "ConsultancyAI — Study-Abroad Chatbot",
+      "company": null,
+      "problem": "Students looking to study abroad struggle to explore universities, evaluate matching programs, and connect with counsellors.",
+      "description": "AI-powered study-abroad conversational chatbot built using Python, FastAPI, and OpenRouter LLMs. Understands student queries, extracts preferences (preferred country, budget, academic background, IELTS score), and retrieves real university/program information from backend services to submit enquiries directly to counsellors.",
+      "tech_stack": ["Python", "FastAPI", "OpenRouter", "LLMs", "REST API"],
+      "role": "AI/ML & Backend Engineer",
+      "badges": ["AI Chatbot", "FastAPI"],
+      "is_proprietary": false,
+      "github_url": null,
+      "demo_url": null,
+      "company_url": null
+    }
+  ],
+  "experience": [
+    {
+      "company": "Cogveel Technologies Pvt Ltd",
+      "title": "AI/ML Engineer",
+      "location": "Srinagar, J&K, India",
+      "duration": "Jan 2026 – Present",
+      "current": true,
+      "end_date": null,
+      "url": "https://cogveel.com/",
+      "bullets": [
+        "Design and build RAG-based document Q&A pipelines using Python, LangChain, and FAISS for client-facing products.",
+        "Develop ML features end-to-end — data ingestion, embeddings, retrieval, and API integration with FastAPI/Flask.",
+        "Contribute to Finna.ai, a browser extension that scores user engagement and buying intent on web pages.",
+        "Collaborate on agentic AI workflows and deploy models/services with Docker for production use."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Tech — Computer Science & Engineering",
+      "institution": "GCET Kashmir, Cluster University Srinagar",
+      "duration": "Completed Jan 2026"
+    }
+  ],
+  "certifications": [
+    "Python — freeCodeCamp",
+    "Data Analyst — freeCodeCamp",
+    "Relational Database — freeCodeCamp"
+  ],
+  "streamlit_demo_url": null,
+  "assistant": {
+    "name": "Haze",
+    "initials": "Hz",
+    "greeting": "Hi! I'm Haze — Sheikh Haseeb's portfolio assistant. Ask about skills, projects, Cogveel work, or experience.",
+    "suggested_questions": [
+      "What projects have you built?",
+      "Tell me about your Cogveel work",
+      "What's your tech stack?",
+      "How much experience do you have?"
+    ]
+  },
+  "chat": {
+    "suggestion_chips": [
+      "What projects have you built?",
+      "Tell me about your Cogveel work",
+      "What's your tech stack?",
+      "How much experience do you have?"
+    ]
+  },
+  "seo": {
+    "title": "Sheikh Haseeb — AI/ML Engineer | Portfolio & Haze AI",
+    "description": "Portfolio of Sheikh Haseeb, an AI/ML Engineer in Srinagar building RAG pipelines, LLM systems, agentic AI workflows, and computer vision solutions.",
+    "og_image": "/static/images/og-image.png",
+    "site_url": "https://sheikh-haseeb.onrender.com"
+  }
+}

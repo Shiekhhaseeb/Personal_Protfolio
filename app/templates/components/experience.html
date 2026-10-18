@@ -1,0 +1,61 @@
+<section id="experience" class="py-24 section-alt section-fade">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <p class="section-eyebrow">Career</p>
+    <h2 class="section-title">Experience & Education</h2>
+
+    <div class="timeline max-w-3xl">
+      {% for job in portfolio.experience %}
+      <div class="timeline-item">
+        <div class="glass-card p-6">
+          <div class="flex flex-wrap justify-between gap-2 mb-2">
+            <div>
+              <h3 class="font-display text-lg font-semibold">{{ job.title }}</h3>
+              {% if job.url %}
+              <a href="{{ job.url }}" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline text-sm font-medium">{{ job.company }}</a>
+              {% else %}
+              <p class="text-accent text-sm font-medium">{{ job.company }}</p>
+              {% endif %}
+            </div>
+            <p class="text-sm text-muted bg-bg-primary/50 px-3 py-1 rounded-full border border-border/50">{{ job.duration }}</p>
+          </div>
+          <p class="text-sm text-muted mb-4">{{ job.location }}</p>
+          <ul class="space-y-2.5">
+            {% for bullet in job.bullets %}
+            <li class="text-sm text-muted flex gap-2.5 leading-relaxed">
+              <span class="text-accent mt-0.5">▸</span>
+              <span>{{ bullet }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+
+      {% for edu in portfolio.education %}
+      <div class="timeline-item">
+        <div class="glass-card p-6">
+          <h3 class="font-display text-lg font-semibold">{{ edu.degree }}</h3>
+          <p class="text-accent text-sm mt-1 font-medium">{{ edu.institution }}</p>
+          <p class="text-sm text-muted mt-2">{{ edu.duration }}</p>
+        </div>
+      </div>
+      {% endfor %}
+
+      {% if portfolio.certifications %}
+      <div class="timeline-item">
+        <div class="glass-card p-6">
+          <h3 class="font-display text-lg font-semibold mb-3">Certifications</h3>
+          <ul class="space-y-2">
+            {% for cert in portfolio.certifications %}
+            <li class="text-sm text-muted flex gap-2.5">
+              <span class="text-accent">✓</span>
+              <span>{{ cert }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

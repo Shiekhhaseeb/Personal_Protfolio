@@ -1,0 +1,38 @@
+<article class="project-card glass-card p-6 transition-all duration-300 h-full flex flex-col">
+  <div class="flex flex-wrap gap-2 mb-4">
+    {% for badge in project.badges %}
+    <span class="badge {% if project.is_proprietary %}badge-proprietary{% else %}badge-open{% endif %}">{{ badge }}</span>
+    {% endfor %}
+  </div>
+
+  <h3 class="font-display text-xl font-semibold mb-2">{{ project.title }}</h3>
+  {% if project.company %}
+  <p class="text-sm text-accent mb-3 font-medium">{{ project.company }}</p>
+  {% endif %}
+
+  <p class="text-sm text-muted mb-2"><span class="text-[#f0f0f5] font-medium">Problem:</span> {{ project.problem }}</p>
+  <p class="text-sm text-muted mb-4 leading-relaxed flex-grow">{{ project.description }}</p>
+
+  <p class="text-xs text-muted mb-3">Role: <span class="text-[#f0f0f5]">{{ project.role }}</span></p>
+
+  <div class="flex flex-wrap gap-2 mb-5">
+    {% for tech in project.tech_stack %}
+    <span class="tech-tag">{{ tech }}</span>
+    {% endfor %}
+  </div>
+
+  <div class="flex flex-wrap gap-3 mt-auto pt-2 border-t border-border/50">
+    {% if project.github_url %}
+    <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3">GitHub</a>
+    {% endif %}
+    {% if project.demo_url %}
+    <a href="{{ project.demo_url }}" target="_blank" rel="noopener noreferrer" class="btn-primary text-xs py-2 px-3">Live Demo</a>
+    {% endif %}
+    {% if project.is_proprietary and project.company_url %}
+    <a href="{{ project.company_url }}" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3">Company</a>
+    {% endif %}
+    {% if not project.is_proprietary and not project.github_url and not project.demo_url %}
+    <span class="text-xs text-muted italic py-2">GitHub link coming soon</span>
+    {% endif %}
+  </div>
+</article>

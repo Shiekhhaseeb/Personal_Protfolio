@@ -1,0 +1,52 @@
+<section id="contact" class="py-24 section-fade">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+    <p class="section-eyebrow">Let's Connect</p>
+    <h2 class="section-title">Get in Touch</h2>
+
+    <div class="contact-panel">
+      <p class="text-muted mb-8 leading-relaxed">
+        Open to AI/ML engineering roles, collaborations, and interesting problems. Reach out via email or connect on social.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3 mb-3">
+        <a
+          id="contact-email-link"
+          href="{{ mailto_url }}"
+          class="btn-primary inline-flex cursor-pointer"
+          aria-label="Send email to {{ portfolio.profile.email }}"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          {{ portfolio.profile.email }}
+        </a>
+        <a
+          id="contact-resume-link"
+          href="/resume"
+          class="btn-primary inline-flex cursor-pointer"
+          download
+          aria-label="Download Resume"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Download Resume
+        </a>
+      </div>
+
+      <p class="text-xs text-muted mb-8">
+        Opens your email app.
+        <a href="{{ gmail_url }}" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">
+          Compose in Gmail
+        </a>
+        if nothing opens.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="{{ portfolio.social.linkedin }}" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="LinkedIn">LinkedIn</a>
+        <a href="{{ portfolio.social.github }}" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="GitHub">GitHub</a>
+        <a href="{{ portfolio.social.twitter }}" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="Twitter">Twitter</a>
+      </div>
+    </div>
+  </div>
+</section>

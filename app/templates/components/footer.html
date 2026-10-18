@@ -1,0 +1,14 @@
+<footer class="site-footer py-10 mt-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted">
+    <p>© {{ portfolio.profile.name }} · Built with Python & AI</p>
+    <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-xs text-muted">
+      <p class="flex items-center gap-1.5">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent/60"></span>
+        {{ portfolio.profile.location }}
+      </p>
+      {% if portfolio.profile.last_updated %}
+      <p class="text-muted/70">Last updated: {{ portfolio.profile.last_updated }}</p>
+      {% endif %}
+    </div>
+  </div>
+</footer>

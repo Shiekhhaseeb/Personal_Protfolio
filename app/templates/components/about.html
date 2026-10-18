@@ -1,0 +1,22 @@
+<section id="about" class="py-24 section-fade">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <p class="section-eyebrow">Introduction</p>
+    <h2 class="section-title">About Me</h2>
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div class="glass-card p-8">
+        <p class="text-muted leading-relaxed text-lg">{{ portfolio.profile.bio }}</p>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-accent uppercase tracking-wider mb-5">What sets me apart</h3>
+        <ul class="space-y-3">
+          {% for item in portfolio.differentiators %}
+          <li class="diff-card flex gap-3 text-muted">
+            <span class="diff-icon">{{ loop.index }}</span>
+            <span class="pt-0.5 leading-relaxed">{{ item }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
