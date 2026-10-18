@@ -35,7 +35,7 @@ async def chat_config():
 
 class ChatTurn(BaseModel):
     role: Literal["user", "assistant"]
-    content: str = Field(..., min_length=1, max_length=500)
+    content: str = Field(..., min_length=1, max_length=2000)
 
 
 class ChatRequest(BaseModel):

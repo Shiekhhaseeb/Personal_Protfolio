@@ -227,8 +227,11 @@ document.addEventListener('DOMContentLoaded', () => {
     updateMicState();
     showTypingIndicator(messages, assistantInitials, assistantName);
 
-    // Prepare conversation memory payload (up to last 4 turns)
-    const historyPayload = conversationHistory.slice(-4);
+    // Prepare conversation memory payload (up to last 4 turns, with content truncated safely)
+    const historyPayload = conversationHistory.slice(-4).map((turn) => ({
+      role: turn.role,
+      content: (turn.content || '').slice(0, 1000),
+    }));
     // Record user turn locally
     conversationHistory.push({ role: 'user', content: trimmed });
 
