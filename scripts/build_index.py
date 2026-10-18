@@ -32,12 +32,20 @@ def main() -> int:
             )
             return 0
 
-        build_vectorstore(force=args.force)
-        print("Vector index built successfully.")
-        return 0
+        try:
+            build_vectorstore(force=args.force)
+            print("Vector index built successfully.")
+            return 0
+        except Exception as exc:
+            print(
+                f"WARNING: Could not build FAISS index ({exc}). "
+                "Skipping build; the application will run in Direct Context Mode at runtime.",
+                file=sys.stderr,
+            )
+            return 0
     except Exception as exc:
-        print(f"Failed to build index: {exc}", file=sys.stderr)
-        return 1
+        print(f"WARNING: Failed during build_index setup: {exc}. Skipping.", file=sys.stderr)
+        return 0
 
 
 if __name__ == "__main__":
