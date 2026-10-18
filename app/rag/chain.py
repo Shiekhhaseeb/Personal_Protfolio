@@ -150,8 +150,15 @@ def ask_portfolio(question: str, history: list[dict[str, Any]] | None = None) ->
     started = time.perf_counter()
 
     try:
-        if settings.google_api_key:
-            reply = get_rag_chain().invoke(payload)
+        from pathlib import Path
+        vectorstore_marker = Path(__file__).resolve().parent / "vectorstore" / "portfolio_faiss.faiss"
+
+        if settings.google_api_key and vectorstore_marker.exists():
+            try:
+                reply = get_rag_chain().invoke(payload)
+            except Exception as rag_err:
+                logger.warning("RAG chain failed (%s); falling back to direct chain", rag_err)
+                reply = get_direct_chain().invoke(payload)
         else:
             reply = get_direct_chain().invoke(payload)
     except Exception as exc:
