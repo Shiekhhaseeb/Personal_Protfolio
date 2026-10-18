@@ -243,12 +243,17 @@ document.addEventListener('DOMContentLoaded', () => {
       removeTypingIndicator();
 
       if (!res.ok) {
-        appendMessage(
-          messages,
-          data.detail || 'Something went wrong. Please try again.',
-          'bot error',
-          assistantInitials,
-        );
+        // Rollback failed user turn so it does not poison future requests
+        conversationHistory.pop();
+        let errorMsg = 'Something went wrong. Please try again.';
+        if (typeof data.detail === 'string') {
+          errorMsg = data.detail;
+        } else if (Array.isArray(data.detail) && data.detail.length > 0) {
+          errorMsg = data.detail.map((err) => err.msg || JSON.stringify(err)).join(', ');
+        } else if (data.detail && typeof data.detail === 'object') {
+          errorMsg = data.detail.msg || JSON.stringify(data.detail);
+        }
+        appendMessage(messages, errorMsg, 'bot error', assistantInitials);
       } else {
         appendMessage(messages, data.reply, 'bot', assistantInitials);
         // Record assistant turn in memory
@@ -258,6 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     } catch {
+      conversationHistory.pop();
       removeTypingIndicator();
       appendMessage(messages, 'Network error. Please check your connection.', 'bot error', assistantInitials);
     } finally {
