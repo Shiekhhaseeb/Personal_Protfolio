@@ -24,20 +24,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Scroll-triggered section fade-in
+  // Scroll-triggered section fade-in (respects prefers-reduced-motion)
   const sections = document.querySelectorAll('.section-fade');
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-  );
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  sections.forEach((section) => observer.observe(section));
+  if (prefersReducedMotion) {
+    sections.forEach((section) => section.classList.add('visible'));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
 
   // Active nav highlight on scroll
   const navLinks = document.querySelectorAll('.nav-link');

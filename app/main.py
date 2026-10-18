@@ -65,11 +65,26 @@ async def lifespan(app: FastAPI):
 
 
 def create_app() -> FastAPI:
+    current_settings = get_settings()
+    is_prod = current_settings.is_production
+
+    from starlette.middleware.gzip import GZipMiddleware
+    from app.core.middleware import SecurityHeadersMiddleware, StaticCacheMiddleware
+
     application = FastAPI(
         title="Sheikh Haseeb Portfolio",
         version=__version__,
         lifespan=lifespan,
+        docs_url=None if is_prod else "/docs",
+        redoc_url=None if is_prod else "/redoc",
+        openapi_url=None if is_prod else "/openapi.json",
     )
+
+    # Middleware execution order: last added is executed outermost.
+    # We want: Client -> SecurityHeaders -> GZip -> StaticCache -> App
+    application.add_middleware(SecurityHeadersMiddleware)
+    application.add_middleware(GZipMiddleware, minimum_size=1000)
+    application.add_middleware(StaticCacheMiddleware)
 
     application.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
     application.include_router(pages.router)

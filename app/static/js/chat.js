@@ -126,12 +126,48 @@ document.addEventListener('DOMContentLoaded', () => {
   let recognition = createSpeechRecognition();
   const voiceSupported = Boolean(recognition);
 
+  const teaser = document.getElementById('chat-teaser');
+  const teaserClose = document.getElementById('chat-teaser-close');
+
   if (micBtn) {
     if (!voiceSupported) {
-      micBtn.disabled = true;
       micBtn.classList.add('chat-mic-unsupported');
-      micBtn.setAttribute('title', 'Voice input needs Chrome or Edge');
+      micBtn.setAttribute('title', 'Voice input is not supported in this browser (try Chrome/Edge)');
+      micBtn.setAttribute('aria-label', 'Voice input unsupported in this browser');
     }
+  }
+
+  // Teaser bubble: auto-opens after 8 seconds, dismissible, once per session
+  const TEASER_STORAGE_KEY = 'haze_chat_teaser_shown';
+  function dismissTeaser() {
+    if (!teaser) return;
+    teaser.classList.add('hidden');
+    try {
+      sessionStorage.setItem(TEASER_STORAGE_KEY, 'true');
+    } catch {
+      // ignore storage errors
+    }
+  }
+
+  if (teaser && !sessionStorage.getItem(TEASER_STORAGE_KEY)) {
+    const teaserTimer = setTimeout(() => {
+      if (!isOpen && !sessionStorage.getItem(TEASER_STORAGE_KEY)) {
+        teaser.classList.remove('hidden');
+      }
+    }, 8000);
+
+    teaserClose?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearTimeout(teaserTimer);
+      dismissTeaser();
+    });
+
+    teaser.addEventListener('click', (e) => {
+      if (e.target !== teaserClose) {
+        dismissTeaser();
+        togglePanel(true);
+      }
+    });
   }
 
   function stopListening() {
@@ -148,7 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!micBtn) return;
     const disabled = isLoading || isListening;
     micBtn.disabled = isLoading;
-    if (isLoading) {
+    if (!voiceSupported) {
+      micBtn.setAttribute('title', 'Voice input is not supported in this browser (try Chrome/Edge)');
+    } else if (isLoading) {
       micBtn.setAttribute('title', `Wait for ${assistantName} to reply…`);
     } else if (isListening) {
       micBtn.setAttribute('title', 'Listening… tap to stop');
@@ -161,11 +199,12 @@ document.addEventListener('DOMContentLoaded', () => {
     isOpen = open;
     panel.classList.toggle('hidden', !open);
     launcher.classList.toggle('chat-launcher-active', open);
-    if (!open) {
-      stopListening();
-    }
+    launcher.setAttribute('aria-expanded', open ? 'true' : 'false');
     if (open) {
+      dismissTeaser();
       input.focus();
+    } else {
+      stopListening();
     }
   }
 

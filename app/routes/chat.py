@@ -48,10 +48,18 @@ class ChatResponse(BaseModel):
 
 
 def _client_ip(request: Request) -> str:
+    settings = get_settings()
     forwarded = request.headers.get("x-forwarded-for")
     if forwarded:
-        return forwarded.split(",")[0].strip()
-    if request.client:
+        # X-Forwarded-For: client, proxy1, proxy2...
+        # Behind trusted reverse proxies (e.g. Render with trusted_proxy_count=1),
+        # the rightmost entry appended by the proxy is the verified client IP.
+        # This prevents spoofing via a fake left-most header injected by the client.
+        ips = [ip.strip() for ip in forwarded.split(",") if ip.strip()]
+        if ips:
+            idx = max(0, len(ips) - settings.trusted_proxy_count)
+            return ips[idx]
+    if request.client and request.client.host:
         return request.client.host
     return "unknown"
 

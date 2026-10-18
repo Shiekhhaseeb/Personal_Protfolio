@@ -12,6 +12,8 @@ class Settings(BaseSettings):
     )
 
     env: Literal["development", "production"] = "development"
+    environment: Literal["development", "production"] | None = None
+    trusted_proxy_count: int = 1
     log_level: str = "info"
     llm_provider: Literal["groq", "gemini"] = "groq"
     groq_api_key: str = ""
@@ -20,6 +22,10 @@ class Settings(BaseSettings):
     gemini_model: str = "gemini-2.0-flash"
     chat_rate_limit: int = 20
     app_version: str = "1.0.0"
+
+    @property
+    def is_production(self) -> bool:
+        return (self.environment or self.env) == "production"
 
     @property
     def chat_enabled(self) -> bool:

@@ -32,7 +32,7 @@
             Download Resume
           </a>
           {% if chat_enabled %}
-          <button type="button" id="hero-ask-haze" class="btn-haze">
+          <button type="button" id="hero-ask-haze" class="btn-haze" aria-label="Ask {{ portfolio.assistant.name }} a question">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
             </svg>
@@ -50,7 +50,10 @@
             <img
               src="{{ portfolio.profile.photo }}"
               alt="{{ portfolio.profile.name }}"
-              class="relative w-64 h-64 sm:w-80 sm:h-80 object-cover rounded-2xl"
+              width="320"
+              height="320"
+              fetchpriority="high"
+              class="relative w-64 h-64 sm:w-80 sm:h-80 object-cover rounded-2xl aspect-square"
             />
           </div>
         </div>

@@ -20,7 +20,17 @@ def main() -> int:
         from dotenv import load_dotenv
 
         load_dotenv()
+        from app.config import get_settings
         from app.rag.ingest import build_vectorstore
+
+        settings = get_settings()
+        if not settings.google_api_key:
+            print(
+                "WARNING: GOOGLE_API_KEY is not set. Skipping FAISS vectorstore build; "
+                "the application will run in Direct Context Mode at runtime.",
+                file=sys.stderr,
+            )
+            return 0
 
         build_vectorstore(force=args.force)
         print("Vector index built successfully.")

@@ -16,9 +16,12 @@ VECTORSTORE_MARKER = (
 async def health_check(request: Request):
     settings = get_settings()
     rag_index_loaded = VECTORSTORE_MARKER.exists() or getattr(request.app.state, "rag_ready", False)
+    rag_mode = "rag" if getattr(request.app.state, "rag_ready", False) else "direct"
     return {
         "status": "ok",
         "version": __version__,
+        "mode": rag_mode,
+        "rag_mode": rag_mode,
         "rag_index_loaded": rag_index_loaded,
         "chat_enabled": settings.chat_enabled,
         "chat_ready": getattr(request.app.state, "chat_ready", False),

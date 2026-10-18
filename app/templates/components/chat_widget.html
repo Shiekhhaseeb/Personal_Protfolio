@@ -76,7 +76,16 @@
     </form>
   </div>
 
-  <button id="chat-launcher" class="chat-launcher group" aria-label="Open {{ portfolio.assistant.name }}">
+  <!-- Teaser bubble (auto-opens after 8s, dismissible, shown once per session) -->
+  <div id="chat-teaser" class="chat-teaser hidden" role="status" aria-live="polite">
+    <div class="chat-teaser-bubble">
+      <span class="chat-teaser-text">Ask me about Haseeb's projects!</span>
+      <button type="button" id="chat-teaser-close" class="chat-teaser-close" aria-label="Dismiss message">✕</button>
+    </div>
+    <div class="chat-teaser-tail" aria-hidden="true"></div>
+  </div>
+
+  <button id="chat-launcher" class="chat-launcher group" aria-label="Open {{ portfolio.assistant.name }}" aria-haspopup="dialog" aria-expanded="false">
     <span class="chat-launcher-ring"></span>
     <span class="chat-launcher-inner">
       <svg class="w-7 h-7" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
